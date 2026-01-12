@@ -39,6 +39,12 @@ To get started with running the app locally:
 2. Run `npm install` to install the dependencies
 3. Run `npm start` to start the development server
 
+### Development notes / troubleshooting
+
+- The dev server is Vite with mkcert, so your first run may prompt for sudo to install a local CA; allow it and trust the cert so modules load over HTTPS.
+- Run `npm install` as your normal user (no sudo). If `node_modules` ends up owned by root, delete it and reinstall to avoid Vite permission errors when it prebundles deps.
+- The raw repo has no built assets. Use `npm run dev` for development, or `npm run build` then serve the `dist` folder (e.g., `npm run serve` or `python3 -m http.server --directory dist`) if you need a static server. Serving the repo root with `python3 -m http.server` will 404/white-screen because `/index` and icons are generated at build time.
+
 You can then open the development server in a web browser and the app should appear wrapped in a faux iOS device. Alternatively you can install the [Homescreen VSCode Extension](https://marketplace.visualstudio.com/items?itemName=lukejacksonn.homescreen) and open the app there (requires https which the dever server is configured to use by default).
 
 ## Contributing
